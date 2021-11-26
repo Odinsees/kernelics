@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import {useSelector} from "react-redux";
 import {AppRootState} from "./store";
 import {RequestStatusType} from "./app-reducer";
+import {ErrorSnackbar} from "../Components/ErrorSnackBar/ErrorSnackBar";
+
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
     const status = useSelector<AppRootState, RequestStatusType>(state=> state.app.status)
 
   return (
-    <div>
+    <div className={'App'}>
         <Box style={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar>
@@ -32,6 +34,7 @@ function App() {
             }
         </Box>
         <Todo/>
+        <ErrorSnackbar/>
     </div>
   );
 }

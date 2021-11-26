@@ -1,7 +1,15 @@
-export const syntheticRequest = () =>{
+export const syntheticRequest = (value?:string) =>{
     return  new Promise((res, rej) => {
         setTimeout(()=>{
-            res('oll right')
+            if(value){
+                if(value.length < 10){
+                    return res('oll right')
+                }else{
+                    return rej('max title length is 10 symbol')
+                }
+            }else{
+                return res('oll right')
+            }
         },2000)
     })
 }

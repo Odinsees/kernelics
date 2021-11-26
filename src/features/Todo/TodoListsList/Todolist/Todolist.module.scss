@@ -1,0 +1,30 @@
+
+@import "../../../../common/styles/saas/mixins";
+@import "../../../../common/styles/saas/variables";
+
+
+.todolistWrapper{
+  width: fit-content;
+  min-width: 300px;
+  min-height: 200px;
+
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+
+
+  border: #1976d2 solid 3px;
+  border-radius: 10px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+  .todoTitle{
+    text-align: center;
+    & h3{
+      @include titleText($fontFamily,20px,1)
+    }
+  }
+  .todoTasks{
+    @include otherText($fontFamily,15px,1)
+  }
+}

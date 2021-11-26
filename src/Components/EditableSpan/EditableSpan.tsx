@@ -1,5 +1,8 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {TextField} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {AppRootState} from "../../app/store";
+import {RequestStatusType} from "../../app/app-reducer";
 
 type PropsType = {
     title: string
@@ -9,11 +12,14 @@ type PropsType = {
 
 export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType) {
 
-    console.log("EditableSpan is called")
+    const error = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
 
-    let [edit, setEdit] = useState(false)
-    let [title, setTitle] = useState(props.title)
+    const [edit, setEdit] = useState(false)
+    const [title, setTitle] = useState(props.title)
 
+    useEffect(()=>{
+        setTitle(props.title)
+    },[error])
 
     const editModeHandler = () => {
         setEdit(true)
@@ -31,7 +37,6 @@ export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType
             setEdit(false)
         }
     }
-
     return (
         edit
             ? <TextField
@@ -44,6 +49,5 @@ export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType
                 disabled={props.disabled}
             />
             : <span onDoubleClick={editModeHandler}>{props.title}</span>
-
     )
 })

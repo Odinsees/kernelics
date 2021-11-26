@@ -1,7 +1,13 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {syntheticRequest} from "../../utils/utils";
-import {RequestStatusType, setAppErrorActionType, setAppStatus, SetAppStatusActionType} from "../../app/app-reducer";
+import {
+    RequestStatusType,
+    setAppError,
+    setAppErrorActionType,
+    setAppStatus,
+    SetAppStatusActionType
+} from "../../app/app-reducer";
 
 
 export type TodolistType = {
@@ -63,11 +69,18 @@ export const deleteTodolist = (todolistID: string) => (dispatch: Dispatch<Action
 }
 
 export const renameTodolist = (todolistID: string, newTitle: string) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(setEntityStatus(todolistID,'loading'))
     dispatch(setAppStatus('loading'))
-    syntheticRequest()
+    syntheticRequest(newTitle)
         .then(() => {
             dispatch(setAppStatus('succeeded'))
+            dispatch(setEntityStatus(todolistID,'succeeded'))
             dispatch(renameTodolistByID(todolistID, newTitle))
+        })
+        .catch(err=>{
+            dispatch(setAppError(err))
+            dispatch(setAppStatus('failed'))
+            dispatch(setEntityStatus(todolistID,'failed'))
         })
 }
 
