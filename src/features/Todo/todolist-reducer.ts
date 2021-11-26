@@ -9,9 +9,15 @@ export type TodolistType = {
     title: string
 }
 
+let todoID1 = v1()
+let todoID2 = v1()
+
 type initialStateType = TodolistType[]
 
-const initialState: initialStateType = []
+const initialState: initialStateType = [
+    {'id': todoID1, 'title': 'title1'},
+    {'id': todoID2, 'title': 'title2'},
+]
 
 export const todolistReducer = (state: TodolistType[] = initialState, action: ActionsType): TodolistType[] => {
     switch (action.type) {

@@ -7,6 +7,7 @@ import {TodolistType} from "../todolist-reducer";
 export const TodoLists = () => {
 
     const todoLists = useSelector<AppRootState, TodolistType[]>(state => state.todoLists)
+
     return (
         <div>
             {todoLists.map(todo => {

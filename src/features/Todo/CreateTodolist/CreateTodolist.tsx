@@ -7,13 +7,13 @@ export const CreateTodolist = () => {
 
     const dispatch = useDispatch()
 
-    const CreateTodoHandler = (newTitle:string) =>{
+    const CreateTodoHandler = (newTitle:string,) =>{
         dispatch(addNewTodolist(newTitle))
     }
 
     return (
         <div>
-            <TitleForm callBack={CreateTodoHandler}/>
+            <TitleForm callBack={CreateTodoHandler} maxLength={10}/>
         </div>
     )
 }

@@ -6,15 +6,17 @@ import * as yup from 'yup'
 
 type TitleFormPropsType = {
     callBack: (newTitle: string) => void
+    maxLength:number
 }
 
-const titleScheme = yup.object().shape({
-    title: yup.string()
-        .max(10, 'max length is 10 symbol')
-})
-
-
 export const TitleForm = (props: TitleFormPropsType) => {
+
+    const schemeCreator = (maxlength:number = props.maxLength) =>{
+        return yup.object().shape({
+            title: yup.string()
+                .max(maxlength, `max length is ${maxlength} symbol`)
+        })
+    }
 
     const [error, setError] = useState(false)
 
@@ -30,7 +32,7 @@ export const TitleForm = (props: TitleFormPropsType) => {
                 setError(true)
             }
         },
-        validationSchema:titleScheme
+        validationSchema:schemeCreator()
     });
 
     const onKeypressHandler = () => {
