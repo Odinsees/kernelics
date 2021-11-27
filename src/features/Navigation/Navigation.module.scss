@@ -1,0 +1,14 @@
+@import "../../common/styles/saas/mixins";
+@import "../../common/styles/saas/variables";
+
+.navigationWrapper{
+
+}
+
+.navigationLink{
+  text-decoration: none;
+  @include otherText($fontFamily,15px,2);
+  & a.active{
+    color: $titleTextColor;
+  }
+}

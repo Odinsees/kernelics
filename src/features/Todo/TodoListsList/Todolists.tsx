@@ -9,8 +9,9 @@ export const TodoLists = () => {
 
     const todoLists = useSelector<AppRootState, TodolistType[]>(state => state.todoLists)
 
-    return (
-        <div className={style.allTodoWrapper}>
+    return todoLists.length === 0
+        ? <h2 className={style.textTyping}>Your TODO will be here, when you create them.</h2>
+        : <div className={style.allTodoWrapper}>
             {todoLists.map(todo => {
                 return (
                     <Todolist
@@ -20,7 +21,4 @@ export const TodoLists = () => {
                 )
             })}
         </div>
-
-    )
-
 }

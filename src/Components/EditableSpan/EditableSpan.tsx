@@ -12,14 +12,14 @@ type PropsType = {
 
 export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType) {
 
-    const error = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
+    const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
 
     const [edit, setEdit] = useState(false)
     const [title, setTitle] = useState(props.title)
 
     useEffect(()=>{
         setTitle(props.title)
-    },[error])
+    },[status,props.title])
 
     const editModeHandler = () => {
         setEdit(true)

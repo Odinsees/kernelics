@@ -1,0 +1,37 @@
+@import "../../../common/styles/saas/mixins";
+@import "../../../common/styles/saas/variables";
+
+.createTodoWrapper {
+  width: 100%;
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  .textTyping {
+    width: 12em;
+    @include titleText($fontFamily, 22px, 3);
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: type 2s steps(24, end);
+    animation: type 2s steps(24, end);
+  }
+
+  @keyframes type {
+    from {
+      width: 0;
+    }
+  }
+
+  @-webkit-keyframes type {
+    from {
+      width: 0;
+    }
+  }
+}
+
+

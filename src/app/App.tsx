@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import {useSelector} from "react-redux";
 import {AppRootState} from "./store";
 import {RequestStatusType} from "./app-reducer";
-import {ErrorSnackbar} from "../Components/ErrorSnackBar/ErrorSnackBar";
+import {ErrorSnackbar, SuccessSnackbar} from "../Components/SnackBar/ErrorSnackBar";
 
 
 
@@ -21,7 +21,7 @@ function App() {
             <AppBar position="static">
                 <Toolbar>
                     <Navigation/>
-                    <Typography variant="h6" component="div" style={{flexGrow: 1}}>
+                    <Typography variant="h6" component="div" style={{flexGrow: 1, marginLeft:'20px'}}>
                         Your Todolist
                     </Typography>
                     <Button color="inherit">Login</Button>
@@ -35,6 +35,7 @@ function App() {
         </Box>
         <Todo/>
         <ErrorSnackbar/>
+        <SuccessSnackbar/>
     </div>
   );
 }

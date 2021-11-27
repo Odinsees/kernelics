@@ -2,6 +2,7 @@ import Button from "@material-ui/core/Button"
 import {Fade, Menu, MenuItem} from "@material-ui/core";
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import style from './Navigation.module.scss'
 
 export const Navigation = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -14,7 +15,7 @@ export const Navigation = () => {
     };
 
     return (
-        <div>
+        <div className={style.navigationWrapper}>
             <Button
                 id="demo-positioned-button"
                 aria-controls="demo-positioned-menu"
@@ -36,8 +37,16 @@ export const Navigation = () => {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem onClick={handleClose}><Link to="/create-new-todolist">Create new TODOLIST</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/my-todoLists">My TODOLIST</Link></MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link className={style.navigationLink} to="/create-new-todolist">
+                        Create new TODOLIST
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link className={style.navigationLink} to="/my-todoLists">
+                        My TODOLIST
+                    </Link>
+                </MenuItem>
             </Menu>
         </div>
     );
