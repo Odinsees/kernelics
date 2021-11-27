@@ -7,7 +7,7 @@ export const Todo = () => {
     return (
         <div className={style.ToDoPage}>
             <Routes>
-                <Route path="/" element={<Navigate replace to="/my-todoLists"/>}/>
+                <Route path="/" element={<Navigate replace to="/create-new-todolist"/>}/>
                 <Route path="/create-new-todolist" element={<CreateTodolist/>}/>
                 <Route path="/my-todoLists" element={<TodoLists/>}/>
             </Routes>
