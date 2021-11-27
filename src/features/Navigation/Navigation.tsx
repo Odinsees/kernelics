@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button"
 import {Fade, Menu, MenuItem} from "@material-ui/core";
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import style from './Navigation.module.scss'
 
 export const Navigation = () => {
@@ -53,6 +53,3 @@ export const Navigation = () => {
 }
 
 
-// <div>
-//     <Link to="/create-new-todolist">Create new Todolist</Link>
-//     <Link

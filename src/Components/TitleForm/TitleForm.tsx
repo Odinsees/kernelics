@@ -9,12 +9,12 @@ import {RequestStatusType} from "../../app/app-reducer";
 
 type TitleFormPropsType = {
     callBack: (newTitle: string) => void
-    maxLength:number
+    maxLength: number
 }
 
 export const TitleForm = (props: TitleFormPropsType) => {
 
-    const schemeCreator = (maxlength:number = props.maxLength) =>{
+    const schemeCreator = (maxlength: number = props.maxLength) => {
         return yup.object().shape({
             title: yup.string()
                 .max(maxlength, `max length is ${maxlength} symbol`)
@@ -28,14 +28,14 @@ export const TitleForm = (props: TitleFormPropsType) => {
             title: ''
         },
         onSubmit: (values) => {
-            if(values.title.trim() !== ""){
+            if (values.title.trim() !== "") {
                 props.callBack(values.title)
                 formik.resetForm()
-            }else{
+            } else {
                 setError(true)
             }
         },
-        validationSchema:schemeCreator()
+        validationSchema: schemeCreator()
     });
 
     const onKeypressHandler = () => {
@@ -43,7 +43,6 @@ export const TitleForm = (props: TitleFormPropsType) => {
     }
 
     const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
-
 
     return (
         <div>

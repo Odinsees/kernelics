@@ -10,14 +10,6 @@ import {
 } from "../../app/app-reducer";
 
 
-export type TodolistType = {
-    id: string
-    title: string
-    entityStatus: RequestStatusType
-}
-
-type initialStateType = TodolistType[]
-
 const initialState: initialStateType = []
 
 export const todolistReducer = (state: TodolistType[] = initialState, action: ActionsType): TodolistType[] => {
@@ -38,6 +30,8 @@ export const todolistReducer = (state: TodolistType[] = initialState, action: Ac
     }
 }
 
+
+//actions
 const addTodolist = (newTodoTitle: string) => ({type: 'TODOLIST/ADD-TODOLIST', newTodoTitle} as const)
 const deleteTodolistByID = (id: string) => ({type: 'TODOLIST/DELETE-TODOLIST', id} as const)
 const renameTodolistByID = (id: string, title: string) => ({type: 'TODOLIST/RENAME-TODOLIST', id, title} as const)
@@ -47,7 +41,7 @@ export const setEntityStatus = (todolistID: string, entityStatus: RequestStatusT
     entityStatus
 } as const)
 
-
+// thunk with synthetic Promise
 export const addNewTodolist = (newTodolistTitle: string) => (dispatch: Dispatch<ActionsType>) => {
     dispatch(setAppStatus('loading'))
     syntheticRequest()
@@ -85,6 +79,15 @@ export const renameTodolist = (todolistID: string, newTitle: string) => (dispatc
         })
 }
 
+
+//types
+export type TodolistType = {
+    id: string
+    title: string
+    entityStatus: RequestStatusType
+}
+
+type initialStateType = TodolistType[]
 
 type ActionsType =
     | ReturnType<typeof addTodolist>

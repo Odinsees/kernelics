@@ -11,7 +11,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 export const AppState = () => {
-    return  useSelector((state: AppRootState) => state.app)
+    return useSelector((state: AppRootState) => state.app)
 }
 
 

@@ -4,11 +4,14 @@ import thunk from "redux-thunk";
 import {appReducer} from "./app-reducer";
 
 let rootReducer = combineReducers({
-    app:appReducer,
+    app: appReducer,
     todoLists: todolistReducer,
 })
 
 export type AppRootState = ReturnType<typeof rootReducer>
+
+
+//use LocalStorage
 
 // let preloadedState;
 // const persistedTodolistString = localStorage.getItem("appState")

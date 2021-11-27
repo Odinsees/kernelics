@@ -7,7 +7,7 @@ import {RequestStatusType} from "../../app/app-reducer";
 type PropsType = {
     title: string
     callBack: (newTitle: string) => void
-    disabled?:boolean
+    disabled?: boolean
 }
 
 export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType) {
@@ -17,9 +17,9 @@ export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType
     const [edit, setEdit] = useState(false)
     const [title, setTitle] = useState(props.title)
 
-    useEffect(()=>{
+    useEffect(() => {
         setTitle(props.title)
-    },[status,props.title])
+    }, [status, props.title])
 
     const editModeHandler = () => {
         setEdit(true)
@@ -30,9 +30,9 @@ export const EditableSpan = React.memo(function ({callBack, ...props}: PropsType
     }
 
     const onBlurHandler = () => {
-        if(title === props.title){
+        if (title === props.title) {
             setEdit(false)
-        }else{
+        } else {
             callBack(title)
             setEdit(false)
         }
