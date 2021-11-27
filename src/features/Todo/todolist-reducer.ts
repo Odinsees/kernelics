@@ -32,9 +32,9 @@ export const todolistReducer = (state: TodolistType[] = initialState, action: Ac
 
 
 //actions
-const addTodolist = (newTodoTitle: string) => ({type: 'TODOLIST/ADD-TODOLIST', newTodoTitle} as const)
-const deleteTodolistByID = (id: string) => ({type: 'TODOLIST/DELETE-TODOLIST', id} as const)
-const renameTodolistByID = (id: string, title: string) => ({type: 'TODOLIST/RENAME-TODOLIST', id, title} as const)
+export const addTodolist = (newTodoTitle: string) => ({type: 'TODOLIST/ADD-TODOLIST', newTodoTitle} as const)
+export const deleteTodolistByID = (id: string) => ({type: 'TODOLIST/DELETE-TODOLIST', id} as const)
+export const renameTodolistByID = (id: string, title: string) => ({type: 'TODOLIST/RENAME-TODOLIST', id, title} as const)
 export const setEntityStatus = (todolistID: string, entityStatus: RequestStatusType) => ({
     type: 'SET-ENTITY-STATUS',
     todolistID,
